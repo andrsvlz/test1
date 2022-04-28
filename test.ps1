@@ -204,7 +204,8 @@ $arc="x86"
 }
 
 if ($officearq  -match "32-bit"){
-if ($(dotnet --list-sdks) -match "5.0.407"){
+if ($(C:\Progra~2\dotnet\dotnet.exe --list-sdks) -match "5.0.407"   -and  $(C:\Progra~2\dotnet\dotnet.exe --list-sdks) -match '(x86)')  
+{
 echo "si"
 }
 else{
@@ -318,11 +319,13 @@ $exit_code = Run-Process -executable $folder"webview.exe" -arguments "/silent /i
 
 
 if ($officearq  -match "64-bit"){
-if ((Get-ItemProperty -Path HKLM:\SOFTWARE\Microsoft\Office\Excel\AddIns\IBPXLClient.Connect).FriendlyName -eq "SAP IBP, add-in for Microsoft Excel")
+if (!(Get-ItemProperty -Path HKLM:\SOFTWARE\Microsoft\Office\Excel\AddIns\IBPXLClient.Connect).FriendlyName -eq "SAP IBP, add-in for Microsoft Excel")
 {
+$folder=$tmp_dir
+$folder=$folder+"\x64\"
 $file = $null
 $url = $null
-$url="https://mosaicoweb.colombina.com/colombina_complementos/Temp/$arc/sap.msi"#ponerurl
+$url="https://mosaicoweb.colombina.com/colombina_complementos/Temp/x64/sap.msi"#ponerurl
 if ($file -eq $null) {
 $filename = "sap.msi"
 $file = "$folder\$filename"
@@ -333,7 +336,7 @@ Download-File -url $url -path $file
 
 $file = $null
 $url = $null
-$url="https://mosaicoweb.colombina.com/colombina_complementos/Temp/$arc/sap.mst"#ponerurl
+$url="https://mosaicoweb.colombina.com/colombina_complementos/Temp/x64/sap.mst"#ponerurl
 if ($file -eq $null) {
 $filename = "sap.mst"
 $file = "$folder\$filename"
@@ -359,11 +362,13 @@ $exit_code=Run-Process -executable msiexec.exe -arguments "/i $folder$sapmsi COM
 
 if ($officearq  -match "32-bit"){
 
-if ((Get-ItemProperty -Path HKLM:\SOFTWARE\Microsoft\Office\Excel\AddIns\IBPXLClient.Connect).FriendlyName -eq "SAP IBP, add-in for Microsoft Excel")
+if (!(Get-ItemProperty -Path HKLM:\SOFTWARE\Microsoft\Office\Excel\AddIns\IBPXLClient.Connect).FriendlyName -eq "SAP IBP, add-in for Microsoft Excel")
 {
+$folder=$tmp_dir
+$folder=$folder+"\x86\"
 $file = $null
 $url = $null
-$url="https://mosaicoweb.colombina.com/colombina_complementos/Temp/$arc/sap.msi"#ponerurl
+$url="https://mosaicoweb.colombina.com/colombina_complementos/Temp/x86/sap.msi"#ponerurl
 if ($file -eq $null) {
 $filename = "sap.msi"
 $file = "$folder\$filename"
@@ -374,7 +379,7 @@ Download-File -url $url -path $file
 
 $file = $null
 $url = $null
-$url="https://mosaicoweb.colombina.com/colombina_complementos/Temp/$arc/sap.mst"#ponerurl
+$url="https://mosaicoweb.colombina.com/colombina_complementos/Temp/x86/sap.mst"#ponerurl
 if ($file -eq $null) {
 $filename = "sap.mst"
 $file = "$folder\$filename"
