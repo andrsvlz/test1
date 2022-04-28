@@ -171,7 +171,7 @@ echo "si"
 else{
 $file = $null
 $url = $null
-$url="https://go.microsoft.com/fwlink/?LinkID=863265"
+$url="https://192.168.202.86/corona_complementos\$arq\dotnet.exe"#poner
 if ($file -eq $null) {
 $filename = "dotnet.exe"
 $file = "$folder\$filename"
@@ -197,7 +197,7 @@ instalado}
 else{
 $file = $null
 $url = $null
-$url="https://go.microsoft.com/fwlink/?LinkID=863265"#ponerurl
+$url="https://192.168.202.86/corona_complementos\$arq\webview.exe"#poner
 if ($file -eq $null) {
 $filename = "webview.exe"
 $file = "$folder\$filename"
@@ -222,7 +222,7 @@ if  (Get-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\EdgeUpdate\Clients\{F30172
 instalado}else{
 $file = $null
 $url = $null
-$url="https://go.microsoft.com/fwlink/?LinkID=863265"#ponerurl
+$url="https://192.168.202.86/corona_complementos\$arq\webview.exe"#ponerurl
 if ($file -eq $null) {
 $filename = "webview.exe"
 $file = "$folder\$filename"
@@ -249,7 +249,7 @@ if ((Get-ItemProperty -Path HKLM:\SOFTWARE\Microsoft\Office\Excel\AddIns\IBPXLCl
 {
 $file = $null
 $url = $null
-$url="https://go.microsoft.com/fwlink/?LinkID=863265"#ponerurl
+$url="https://192.168.202.86/corona_complementos\$arq\sap.msi"#ponerurl
 if ($file -eq $null) {
 $filename = "sap.msi"
 $file = "$folder\$filename"
@@ -281,7 +281,7 @@ if ((Get-ItemProperty -Path HKLM:\SOFTWARE\Microsoft\Office\Excel\AddIns\IBPXLCl
 {
 $file = $null
 $url = $null
-$url="https://go.microsoft.com/fwlink/?LinkID=863265"#ponerurl
+$url="https://192.168.202.86/corona_complementos\$arq\sap.msi"#ponerurl
 if ($file -eq $null) {
 $filename = "sap.msi"
 $file = "$folder\$arq\$filename"
