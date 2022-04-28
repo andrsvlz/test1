@@ -205,7 +205,7 @@ echo "si"
 else{
 $file = $null
 $url = $null
-$url="https://mosaicoweb.colombina.com/colombina_complementos/$arc/dotnet.exe"#poner
+$url="https://mosaicoweb.colombina.com/colombina_complementos/temp/$arc/dotnet.exe"#poner
 if ($file -eq $null) {
 $filename = "dotnet.exe"
 $file = "$folder\$filename"
@@ -231,7 +231,7 @@ instalado}
 else{
 $file = $null
 $url = $null
-$url="https://mosaicoweb.colombina.com/colombina_complementos/$arc/webview.exe"#poner
+$url="https://mosaicoweb.colombina.com/colombina_complementos/temp/$arc/webview.exe"#poner
 if ($file -eq $null) {
 $filename = "webview.exe"
 $file = "$folder\$filename"
@@ -256,7 +256,7 @@ if  (Get-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\EdgeUpdate\Clients\{F30172
 instalado}else{
 $file = $null
 $url = $null
-$url="https://mosaicoweb.colombina.com/colombina_complementos/$arc/webview.exe"#ponerurl
+$url="https://mosaicoweb.colombina.com/colombina_complementos/temp/$arc/webview.exe"#ponerurl
 if ($file -eq $null) {
 $filename = "webview.exe"
 $file = "$folder\$filename"
@@ -283,7 +283,7 @@ if ((Get-ItemProperty -Path HKLM:\SOFTWARE\Microsoft\Office\Excel\AddIns\IBPXLCl
 {
 $file = $null
 $url = $null
-$url="https://mosaicoweb.colombina.com/colombina_complementos/$arc/sap.msi"#ponerurl
+$url="https://mosaicoweb.colombina.com/colombina_complementos/temp/$arc/sap.msi"#ponerurl
 if ($file -eq $null) {
 $filename = "sap.msi"
 $file = "$folder\$filename"
@@ -315,7 +315,7 @@ if ((Get-ItemProperty -Path HKLM:\SOFTWARE\Microsoft\Office\Excel\AddIns\IBPXLCl
 {
 $file = $null
 $url = $null
-$url="https://mosaicoweb.colombina.com/colombina_complementos/$arc/sap.msi"#ponerurl
+$url="https://mosaicoweb.colombina.com/colombina_complementos/temp/$arc/sap.msi"#ponerurl
 if ($file -eq $null) {
 $filename = "sap.msi"
 $file = "$folder\$arq\$filename"
