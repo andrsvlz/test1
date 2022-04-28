@@ -317,7 +317,7 @@ $exit_code = Run-Process -executable $folder"webview.exe" -arguments "/silent /i
 
 
 
-if (($officearq  -match "64-bit"){
+if ($officearq  -match "64-bit"){
 if ((Get-ItemProperty -Path HKLM:\SOFTWARE\Microsoft\Office\Excel\AddIns\IBPXLClient.Connect).FriendlyName -eq "SAP IBP, add-in for Microsoft Excel")
 {
 $file = $null
