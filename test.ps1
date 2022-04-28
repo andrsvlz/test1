@@ -276,10 +276,11 @@ $exit_code = Run-Process -executable $folder"webview.exe" -arguments "/silent /i
 }}
 
 
+$msoExcel = New-Object -ComObject Excel.Application  
+$officearq = $msoExcel | Select-Object -Property OperatingSystem
 
 
-
-if ((Get-Software -DisplayName *Office* | Select Architecture | sort -unique).architecture -eq "64-Bit"){
+if (($officearq  -match "64-bit"){
 if ((Get-ItemProperty -Path HKLM:\SOFTWARE\Microsoft\Office\Excel\AddIns\IBPXLClient.Connect).FriendlyName -eq "SAP IBP, add-in for Microsoft Excel")
 {
 $file = $null
@@ -297,7 +298,7 @@ $file = $null
 $url = $null
 $url="https://mosaicoweb.colombina.com/colombina_complementos/Temp/$arc/sap.mst"#ponerurl
 if ($file -eq $null) {
-$filename = "sap.msi"
+$filename = "sap.mst"
 $file = "$folder\$filename"
 }
 if ($url -ne $null) {
@@ -319,7 +320,7 @@ $exit_code=Run-Process -executable msiexec.exe -arguments "/i $folder$sapmsi COM
 }
 
 
-if ((Get-Software -DisplayName *Office* | Select Architecture | sort -unique).architecture -eq "32-Bit"){
+if ($officearq  -match "32-bit"){
 
 if ((Get-ItemProperty -Path HKLM:\SOFTWARE\Microsoft\Office\Excel\AddIns\IBPXLClient.Connect).FriendlyName -eq "SAP IBP, add-in for Microsoft Excel")
 {
@@ -328,11 +329,23 @@ $url = $null
 $url="https://mosaicoweb.colombina.com/colombina_complementos/Temp/$arc/sap.msi"#ponerurl
 if ($file -eq $null) {
 $filename = "sap.msi"
-$file = "$folder\$arq\$filename"
+$file = "$folder\$filename"
 }
 if ($url -ne $null) {
 Download-File -url $url -path $file
 }
+
+$file = $null
+$url = $null
+$url="https://mosaicoweb.colombina.com/colombina_complementos/Temp/$arc/sap.mst"#ponerurl
+if ($file -eq $null) {
+$filename = "sap.mst"
+$file = "$folder\$filename"
+}
+if ($url -ne $null) {
+Download-File -url $url -path $file
+}
+
 
 $sapmsi="sap.msi"
 $sapmst="sap.mst"
