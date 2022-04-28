@@ -193,9 +193,11 @@ $architecture = $env:PROCESSOR_ARCHITECTURE
 if ($architecture -eq "AMD64") {
 $folder=$folder+"\x64\"
 $arq="\x64\"
+$arc="x64"
 } else {
 $folder=$folder+"\x86\"
 $arq="\x86\"
+$arc="x86"
 }
 if ($(dotnet --list-sdks) -match "5.0.407"){
 echo "si"
@@ -203,7 +205,7 @@ echo "si"
 else{
 $file = $null
 $url = $null
-$url="https://mosaicoweb.colombina.com/corona_complementos/$arq/dotnet.exe"#poner
+$url="https://mosaicoweb.colombina.com/corona_complementos/$arc/dotnet.exe"#poner
 if ($file -eq $null) {
 $filename = "dotnet.exe"
 $file = "$folder\$filename"
@@ -229,7 +231,7 @@ instalado}
 else{
 $file = $null
 $url = $null
-$url="https://mosaicoweb.colombina.com/corona_complementos/$arq/webview.exe"#poner
+$url="https://mosaicoweb.colombina.com/corona_complementos/$arc/webview.exe"#poner
 if ($file -eq $null) {
 $filename = "webview.exe"
 $file = "$folder\$filename"
@@ -254,7 +256,7 @@ if  (Get-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\EdgeUpdate\Clients\{F30172
 instalado}else{
 $file = $null
 $url = $null
-$url="https://mosaicoweb.colombina.com/corona_complementos/$arq/webview.exe"#ponerurl
+$url="https://mosaicoweb.colombina.com/corona_complementos/$arc/webview.exe"#ponerurl
 if ($file -eq $null) {
 $filename = "webview.exe"
 $file = "$folder\$filename"
@@ -281,7 +283,7 @@ if ((Get-ItemProperty -Path HKLM:\SOFTWARE\Microsoft\Office\Excel\AddIns\IBPXLCl
 {
 $file = $null
 $url = $null
-$url="https://mosaicoweb.colombina.com/corona_complementos/$arq/sap.msi"#ponerurl
+$url="https://mosaicoweb.colombina.com/corona_complementos/$arc/sap.msi"#ponerurl
 if ($file -eq $null) {
 $filename = "sap.msi"
 $file = "$folder\$filename"
@@ -313,7 +315,7 @@ if ((Get-ItemProperty -Path HKLM:\SOFTWARE\Microsoft\Office\Excel\AddIns\IBPXLCl
 {
 $file = $null
 $url = $null
-$url="https://mosaicoweb.colombina.com/corona_complementos/$arq/sap.msi"#ponerurl
+$url="https://mosaicoweb.colombina.com/corona_complementos/$arc/sap.msi"#ponerurl
 if ($file -eq $null) {
 $filename = "sap.msi"
 $file = "$folder\$arq\$filename"
