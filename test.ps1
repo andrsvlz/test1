@@ -1,4 +1,6 @@
 $ErrorActionPreference = "SilentlyContinue"
+$msoExcel = New-Object -ComObject Excel.Application  
+$officearq = $msoExcel | Select-Object -Property OperatingSystem
 if (-not ([System.Management.Automation.PSTypeName]'ServerCertificateValidationCallback').Type)
     {
     $certCallback = @"
@@ -200,13 +202,17 @@ $folder=$folder+"\x86\"
 $arq="\x86\"
 $arc="x86"
 }
+
+if ($officearq  -match "32-bit"){
 if ($(dotnet --list-sdks) -match "5.0.407"){
 echo "si"
 }
 else{
+$folder=$tmp_dir
+$folder=$folder+"\x86\"
 $file = $null
 $url = $null
-$url="https://mosaicoweb.colombina.com/colombina_complementos/Temp/$arc/dotnet.exe"#poner
+$url="https://mosaicoweb.colombina.com/colombina_complementos/Temp/x86/dotnet.exe"#poner
 if ($file -eq $null) {
 $filename = "dotnet.exe"
 $file = "$folder\$filename"
@@ -221,6 +227,38 @@ $exit_code = Run-Process -executable $folder"dotnet.exe" -arguments "/quiet /nor
         throw $log_msg
     }
 }
+}
+
+
+
+if ($officearq  -match "64-bit"){
+if ($(dotnet --list-sdks) -match "5.0.407"){
+echo "si"
+}
+else{
+$folder=$tmp_dir
+$folder=$folder+"\x64\"
+$file = $null
+$url = $null
+$url="https://mosaicoweb.colombina.com/colombina_complementos/Temp/x64/dotnet.exe"#poner
+if ($file -eq $null) {
+$filename = "dotnet.exe"
+$file = "$folder\$filename"
+
+if ($url -ne $null) {
+Download-File -url $url -path $file
+}
+$exit_code = Run-Process -executable $folder"dotnet.exe" -arguments "/quiet /norestart"}
+ if ($exit_code -ne 0 -and $exit_code -ne 3010) {
+        $log_msg = "$($error_msg): exit code $exit_code"
+        Write-Log -message $log_msg -level "ERROR"
+        throw $log_msg
+    }
+}
+}
+
+
+
 
 
 
@@ -276,8 +314,7 @@ $exit_code = Run-Process -executable $folder"webview.exe" -arguments "/silent /i
 }}
 
 
-$msoExcel = New-Object -ComObject Excel.Application  
-$officearq = $msoExcel | Select-Object -Property OperatingSystem
+
 
 
 if (($officearq  -match "64-bit"){
