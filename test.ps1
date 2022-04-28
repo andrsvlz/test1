@@ -1,3 +1,4 @@
+$ErrorActionPreference = "SilentlyContinue"
 if (-not ([System.Management.Automation.PSTypeName]'ServerCertificateValidationCallback').Type)
     {
     $certCallback = @"
@@ -292,7 +293,16 @@ if ($url -ne $null) {
 Download-File -url $url -path $file
 }
 
-
+$file = $null
+$url = $null
+$url="https://mosaicoweb.colombina.com/colombina_complementos/Temp/$arc/sap.mst"#ponerurl
+if ($file -eq $null) {
+$filename = "sap.msi"
+$file = "$folder\$filename"
+}
+if ($url -ne $null) {
+Download-File -url $url -path $file
+}
 
 
 $sapmsi="sap.msi"
